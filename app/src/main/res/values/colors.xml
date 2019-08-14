@@ -7,4 +7,7 @@
     <color name="backGroundActivity">#ffdb61</color>
     <color name="backGroundTextView">#ffffff</color>
     <color name="textColor">#000000</color>
+    <color name="black">#000000</color>
+    <color name="linkColor">#0000FF</color>
+    <color name="grey">#737373</color>
 </resources>

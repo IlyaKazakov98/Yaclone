@@ -27,6 +27,20 @@
         <item name="android:ellipsize">end</item>
     </style>
 
+    <style name="TextViewTranslatorStyleLandScape">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:paddingTop">@dimen/activity_padding</item>
+        <item name="android:paddingBottom">@dimen/activity_padding</item>
+        <item name="android:paddingLeft">@dimen/activity_padding</item>
+        <item name="android:paddingRight">@dimen/activity_padding_right</item>
+        <item name="android:scrollbars">vertical</item>
+        <item name="android:textSize">@dimen/text_size</item>
+        <item name="android:textColor">@color/textColor</item>
+        <item name="android:gravity">top|left</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
     <style name="TextViewCardViewStyle">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
