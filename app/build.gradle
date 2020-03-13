@@ -22,6 +22,14 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
 }
 
 dependencies {
@@ -45,6 +53,7 @@ dependencies {
     retrofit()
     room()
     coroutines()
+    navigation()
     dagger()
 }
 
@@ -84,6 +93,15 @@ def coroutines() {
 
         implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion"
         implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
+    }
+}
+
+def navigation() {
+    dependencies {
+        def navigationVersion = "2.2.1"
+
+        implementation 'androidx.navigation:navigation-fragment-ktx:2.2.1'
+        implementation 'androidx.navigation:navigation-ui-ktx:2.2.1'
     }
 }
 
