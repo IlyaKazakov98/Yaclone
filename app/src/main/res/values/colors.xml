@@ -2,12 +2,13 @@
 <resources>
     <color name="colorPrimary">#ffdb61</color>
     <color name="colorPrimaryDark">#e1c355</color>
-    <color name="colorAccent">#ffdb61</color>
+    <color name="colorAccent">#ffffff</color>
 
     <color name="backGroundActivity">#ffdb61</color>
     <color name="backGroundTextView">#ffffff</color>
     <color name="textColor">#000000</color>
-    <color name="black">#000000</color>
+    <color name="blackColor">#000000</color>
     <color name="linkColor">#0000FF</color>
+    <color name="whiteColor">#ffffff</color>
     <color name="grey">#737373</color>
 </resources>

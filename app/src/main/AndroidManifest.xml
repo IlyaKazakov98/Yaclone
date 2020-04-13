@@ -3,6 +3,7 @@
           package="com.readyfo.yaclone">
 
     <application
+            android:name=".App"
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
             android:label="@string/app_name"
@@ -10,7 +11,7 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
         <activity
-                android:name=".ui.activities.SplashScreenActivity"
+                android:name="com.readyfo.yaclone.presentation.ui.activities.SplashScreenActivity"
                 android:theme="@style/AppThemeLauncher">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -19,7 +20,7 @@
             </intent-filter>
         </activity>
         <activity
-                android:name=".ui.activities.MainActivity"
+                android:name="com.readyfo.yaclone.presentation.ui.activities.MainActivity"
                 android:label="@string/app_name"
                 android:launchMode="singleTop"
                 android:windowSoftInputMode="adjustPan">

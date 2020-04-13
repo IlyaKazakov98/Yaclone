@@ -1,20 +1,17 @@
-package com.readyfo.yaclone.ui.fragments
+package com.readyfo.yaclone.presentation.ui.fragments
 
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import com.readyfo.yaclone.R
+import moxy.MvpAppCompatFragment
 
-class TranslatorFragment : Fragment() {
 
-    companion object {
-        fun newInstance(): TranslatorFragment {
-            return TranslatorFragment()
-        }
-    }
+class TranslatorFragment : MvpAppCompatFragment(){
+//    @InjectPresenter
+//    var translatorPresenter: TranslatorPresenter? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,7 +22,6 @@ class TranslatorFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
         super.onViewCreated(view, savedInstanceState)
     }
 }

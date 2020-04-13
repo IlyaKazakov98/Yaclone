@@ -1,9 +1,8 @@
-package com.readyfo.yaclone.ui.activities
+package com.readyfo.yaclone.presentation.ui.activities
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import com.readyfo.yaclone.R
 
 class SplashScreenActivity : AppCompatActivity() {

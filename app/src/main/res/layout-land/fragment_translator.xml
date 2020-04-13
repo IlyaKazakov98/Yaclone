@@ -5,7 +5,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorPrimary"
-        tools:context=".ui.fragments.TranslatorFragment">
+        tools:context=".presentation.ui.fragments.TranslatorFragment">
     <LinearLayout
             android:id="@+id/choseLangContainer"
             android:layout_width="wrap_content"
@@ -46,7 +46,7 @@
                 style="@style/TextViewTranslatorStyleLandScape"
                 app:layout_constraintWidth_percent="0.5"
                 android:hint="@string/enter_text"
-                android:backgroundTint="@color/backGroundTextView"
+                android:backgroundTint="@color/whiteColor"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"/>
@@ -95,10 +95,10 @@
             android:id="@+id/termsOfUse"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:text="Переведено сервисом «Яндекс.Переводчик» \n http://translate.yandex.ru"
+            android:text="@string/user_agreement"
             android:textSize="@dimen/text_size"
             android:layout_margin="@dimen/small_margin"
-            android:textColor="@color/textColor"
+            android:textColor="@color/blackColor"
             android:textColorLink="@color/linkColor"
             android:gravity="center"
             android:autoLink="web"
