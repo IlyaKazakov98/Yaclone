@@ -1,7 +1,7 @@
 package com.readyfo.yaclone.di.modules
 
-import com.readyfo.yaclone.data.local.datasource.implementation.FetchHistoryDataSourceImpl
-import com.readyfo.yaclone.data.repositories_impl.FetchHistoryRepositoryImpl
+import com.readyfo.yaclone.data.FetchHistoryRepositoryImpl
+import com.readyfo.yaclone.datasource.local.datasourceimpl.FetchHistoryDataSourceImpl
 import com.readyfo.yaclone.domain.usecases.implementations.FetchHistoryUseCaseImpl
 import dagger.Module
 import dagger.Provides
@@ -14,8 +14,11 @@ class AppModule {
 
     @Provides
     fun provideFetchHistoryRepository(fetchHistoryDataSourceImpl: FetchHistoryDataSourceImpl) =
-        FetchHistoryRepositoryImpl(fetchHistoryDataSource = fetchHistoryDataSourceImpl)
+        FetchHistoryRepositoryImpl(
+            fetchHistoryDataSource = fetchHistoryDataSourceImpl
+        )
 
     @Provides
-    fun provideFetchHistoryDataSource() = FetchHistoryDataSourceImpl()
+    fun provideFetchHistoryDataSource() =
+        FetchHistoryDataSourceImpl()
 }
