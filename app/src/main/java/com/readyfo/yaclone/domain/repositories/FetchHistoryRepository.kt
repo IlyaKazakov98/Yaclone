@@ -1,6 +1,6 @@
 package com.readyfo.yaclone.domain.repositories
 
-import com.readyfo.yaclone.presentation.models.HistoryModel
+import com.readyfo.yaclone.domain.models.HistoryModel
 import io.reactivex.Observable
 
 interface FetchHistoryRepository {

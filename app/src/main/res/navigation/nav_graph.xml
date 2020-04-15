@@ -7,12 +7,12 @@
 
     <fragment
             android:id="@+id/navigation_translator"
-            android:name="com.readyfo.yaclone.presentation.ui.fragments.TranslatorFragment"
+            android:name="com.readyfo.yaclone.presentation.translator.TranslatorFragment"
             android:label="fragment_translator"
             tools:layout="@layout/fragment_translator" />
     <fragment
             android:id="@+id/navigation_history"
-            android:name="com.readyfo.yaclone.presentation.ui.fragments.HistoryFragment"
+            android:name="com.readyfo.yaclone.presentation.history.HistoryFragment"
             android:label="fragment_history"
             tools:layout="@layout/fragment_history" />
 </navigation>

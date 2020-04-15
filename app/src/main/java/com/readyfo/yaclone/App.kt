@@ -2,7 +2,7 @@ package com.readyfo.yaclone
 
 import android.app.Application
 import android.content.Context
-import com.readyfo.yaclone.data.local.db.YacloneDataBase
+import com.readyfo.yaclone.datasource.local.db.YacloneDataBase
 import com.readyfo.yaclone.di.AppComponent
 import com.readyfo.yaclone.di.DaggerAppComponent
 
