@@ -21,9 +21,4 @@
             android:id="@+id/isEmptyHistory"
             layout="@layout/empty_description"
             android:visibility="invisible" />
-
-    <include
-            android:id="@+id/progressBar"
-            layout="@layout/progress_bar"
-            android:visibility="invisible" />
 </androidx.constraintlayout.widget.ConstraintLayout>

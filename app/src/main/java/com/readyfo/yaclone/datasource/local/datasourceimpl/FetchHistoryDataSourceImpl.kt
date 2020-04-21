@@ -1,7 +1,7 @@
 package com.readyfo.yaclone.datasource.local.datasourceimpl
 
 import com.readyfo.yaclone.App
-import com.readyfo.yaclone.data.datasource.FetchHistoryDataSource
+import com.readyfo.yaclone.data.datasource.local.FetchHistoryDataSource
 import com.readyfo.yaclone.datasource.local.toHistoryModel
 import com.readyfo.yaclone.domain.models.HistoryModel
 import io.reactivex.Observable

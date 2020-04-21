@@ -9,10 +9,26 @@
             android:id="@+id/navigation_translator"
             android:name="com.readyfo.yaclone.presentation.translator.TranslatorFragment"
             android:label="fragment_translator"
-            tools:layout="@layout/fragment_translator" />
+            tools:layout="@layout/fragment_translator" >
+        <action
+                android:id="@+id/action_navigation_translator_to_choseLangFragment"
+                app:destination="@id/choseLangFragment" />
+    </fragment>
     <fragment
             android:id="@+id/navigation_history"
             android:name="com.readyfo.yaclone.presentation.history.HistoryFragment"
             android:label="fragment_history"
             tools:layout="@layout/fragment_history" />
+    <fragment
+            android:id="@+id/choseLangFragment"
+            android:name="com.readyfo.yaclone.presentation.choselang.ChoseLangFragment"
+            android:label="fragment_chose_lang"
+            tools:layout="@layout/fragment_chose_lang" >
+        <argument
+                android:name="selectedLanguage"
+                app:argType="string" />
+        <argument
+                android:name="typeLanguage"
+                app:argType="integer" />
+    </fragment>
 </navigation>

@@ -4,11 +4,13 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.readyfo.yaclone.datasource.local.dao.ChoseLanguageDAO
 import com.readyfo.yaclone.datasource.local.dao.HistoryDAO
 import com.readyfo.yaclone.datasource.local.entity.HistoryEntity
+import com.readyfo.yaclone.datasource.local.entity.LanguageEntity
 
 @Database(
-    entities = [HistoryEntity::class],
+    entities = [HistoryEntity::class, LanguageEntity::class],
     exportSchema = false,
     version = 1
 )
@@ -16,6 +18,7 @@ import com.readyfo.yaclone.datasource.local.entity.HistoryEntity
 abstract class YacloneDataBase: RoomDatabase() {
 
     abstract fun getHistoryDao(): HistoryDAO
+    abstract fun getLanguagesDao(): ChoseLanguageDAO
 
     companion object {
         @Volatile

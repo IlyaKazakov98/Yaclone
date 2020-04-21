@@ -7,7 +7,7 @@ import dagger.Module
 import dagger.Provides
 
 @Module
-class AppModule {
+class HistoryModule {
     @Provides
     fun provideFetchHistoryUseCase(fetchHistoryRepository: FetchHistoryRepositoryImpl) =
         FetchHistoryUseCaseImpl(fetchHistoryRepository = fetchHistoryRepository)

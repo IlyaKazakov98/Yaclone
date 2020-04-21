@@ -9,8 +9,11 @@ import moxy.MvpPresenter
 
 
 @InjectViewState
-class HistoryPresenter(val fetchHistoryUseCase: FetchHistoryUseCase) : MvpPresenter<HistoryView>() {
-    private var compositeDisposable = CompositeDisposable()
+class HistoryPresenter(private val fetchHistoryUseCase: FetchHistoryUseCase) :
+    MvpPresenter<HistoryView>() {
+    private val compositeDisposable by lazy {
+        CompositeDisposable()
+    }
 
     override fun onDestroy() {
         compositeDisposable.dispose()
@@ -24,44 +27,17 @@ class HistoryPresenter(val fetchHistoryUseCase: FetchHistoryUseCase) : MvpPresen
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
-                viewState.presentLoading(false)
                 if (it.isNotEmpty())
                     viewState.presentHistory(it)
                 else
                     viewState.presentHistoryEmpty(true)
             }, {
-                viewState.presentLoading(false)
+
             })
         compositeDisposable.add(disposable)
     }
 
     private fun isLoading() {
-        viewState.presentLoading(true)
         viewState.presentHistoryEmpty(false)
     }
 }
-
-//        val handler = Handler()
-//        thread {
-//            Thread.sleep(1000)
-//
-//            val mockHistory = ArrayList<HistoryModel>()
-//            mockHistory.add(
-//                HistoryModel(
-//                    id = 0,
-//                    textFrom = "Привет!",
-//                    textTo = "Hello!",
-//                    languageFrom = "ru",
-//                    languageTo = "en",
-//                    favorite = true
-//                )
-//            )
-//            handler.post {
-//                viewState.presentLoading(false)
-//                if (mockHistory.isNotEmpty()) {
-//                    viewState.presentHistory(mockHistory)
-//                }
-//                else
-//                    viewState.presentHistoryEmpty(true)
-//            }
-//        }

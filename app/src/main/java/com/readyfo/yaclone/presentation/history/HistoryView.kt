@@ -8,6 +8,5 @@ import moxy.viewstate.strategy.StateStrategyType
 @StateStrategyType(AddToEndSingleStrategy::class)
 interface HistoryView : MvpView {
     fun presentHistory(historyData: MutableList<HistoryModel>)
-    fun presentLoading(isLoading: Boolean)
     fun presentHistoryEmpty(isEmpty: Boolean)
 }

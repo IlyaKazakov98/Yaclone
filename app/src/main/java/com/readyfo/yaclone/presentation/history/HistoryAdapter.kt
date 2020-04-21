@@ -52,15 +52,12 @@ class HistoryAdapter : RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() 
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HistoryViewHolder {
-        return HistoryViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.item_history, parent, false)
-        )
-    }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = HistoryViewHolder(
+        LayoutInflater.from(parent.context).inflate(R.layout.item_history, parent, false)
+    )
 
-    override fun getItemCount(): Int {
-        return mHistoryList.count()
-    }
+
+    override fun getItemCount() =  mHistoryList.count()
 
     override fun onBindViewHolder(holder: HistoryViewHolder, position: Int) {
         holder.bindTo(mHistoryList[position])
