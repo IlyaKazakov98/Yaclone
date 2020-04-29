@@ -22,7 +22,6 @@ class FetchLanguagesRemoteDataSourceImpl : FetchLanguagesRemoteDataSource {
                         val language = obj.get(key).asString
 
                         LanguageModel(
-                            id = 0,
                             key = key,
                             language = language
                         )

@@ -7,7 +7,6 @@ import com.readyfo.yaclone.domain.models.LanguageModel
 import com.readyfo.yaclone.domain.repositories.FetchLanguagesRepository
 import io.reactivex.Observable
 import io.reactivex.Single
-import java.util.*
 import javax.inject.Inject
 
 class FetchLanguagesRepositoryImpl @Inject constructor(
@@ -32,7 +31,7 @@ class FetchLanguagesRepositoryImpl @Inject constructor(
                         saveLanguagesInDataSource.saveLanguagesInDataBase(it)
                     }
             )
-            .filter { list -> list.isNotEmpty() }
-            .first(Collections.emptyList())
+            .filter { it.isNotEmpty() }
+            .first(listOf(LanguageModel(key = "isEmpty", language = "isEmpty")))
     }
 }

@@ -17,7 +17,6 @@ fun HistoryEntity.toHistoryModel(historyEntity: HistoryEntity) =
 
 fun LanguageEntity.toLanguageModel(languageEntity: LanguageEntity) =
     LanguageModel(
-        id = languageEntity.id,
         key = languageEntity.key,
         language = languageEntity.language
     )
@@ -28,7 +27,6 @@ fun List<LanguageModel>.toLanguagesEntity(languages: List<LanguageModel>): List<
     for (language in languages) {
         languagesEntity.add(
             LanguageEntity(
-                id = 0,
                 key = language.key,
                 language = language.language
             )

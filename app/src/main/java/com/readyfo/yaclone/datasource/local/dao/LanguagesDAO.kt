@@ -8,7 +8,7 @@ import com.readyfo.yaclone.datasource.local.entity.LanguageEntity
 import io.reactivex.Observable
 
 @Dao
-interface ChoseLanguageDAO {
+interface LanguagesDAO {
     @Query("SELECT * FROM languages_table")
     fun fetchLanguages(): Observable<List<LanguageEntity>>
 

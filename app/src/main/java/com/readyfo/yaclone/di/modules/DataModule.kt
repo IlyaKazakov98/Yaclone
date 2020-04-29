@@ -1,21 +1,24 @@
 package com.readyfo.yaclone.di.modules
 
+import com.readyfo.yaclone.data.FetchHistoryRepositoryImpl
 import com.readyfo.yaclone.data.FetchLanguagesRepositoryImpl
+import com.readyfo.yaclone.datasource.local.datasourceimpl.FetchHistoryDataSourceImpl
 import com.readyfo.yaclone.datasource.local.datasourceimpl.FetchLanguagesLocalDataSourceImpl
 import com.readyfo.yaclone.datasource.local.datasourceimpl.SaveLanguagesInDataSourceImpl
 import com.readyfo.yaclone.datasource.remote.datasourceimpl.FetchLanguagesRemoteDataSourceImpl
-import com.readyfo.yaclone.domain.usecases.implementations.FetchLanguagesUseCaseImpl
 import dagger.Module
 import dagger.Provides
 
 @Module
-class ChoseLanguageModule {
+class DataModule {
     @Provides
-    fun provideFetchHistoryUseCase(fetchLanguagesRepository: FetchLanguagesRepositoryImpl) =
-        FetchLanguagesUseCaseImpl(fetchLanguagesRepository = fetchLanguagesRepository)
+    fun provideFetchHistoryRepository(fetchHistoryDataSourceImpl: FetchHistoryDataSourceImpl) =
+        FetchHistoryRepositoryImpl(
+            fetchHistoryDataSource = fetchHistoryDataSourceImpl
+        )
 
     @Provides
-    fun provideFetchHistoryRepository(
+    fun provideFetchLanguagesRepository(
         fetchLanguagesLocalDataSource: FetchLanguagesLocalDataSourceImpl,
         fetchLanguagesRemoteDataSource: FetchLanguagesRemoteDataSourceImpl,
         saveLanguagesInDataSource: SaveLanguagesInDataSourceImpl
@@ -25,16 +28,4 @@ class ChoseLanguageModule {
             fetchLanguagesRemoteDataSource = fetchLanguagesRemoteDataSource,
             saveLanguagesInDataSource = saveLanguagesInDataSource
         )
-
-    @Provides
-    fun provideFetchLanguagesLocalDataSource() =
-        FetchLanguagesLocalDataSourceImpl()
-
-    @Provides
-    fun provideFetchLanguagesRemoteDataSource() =
-        FetchLanguagesRemoteDataSourceImpl()
-
-    @Provides
-    fun provideSaveLanguagesInDataSource() =
-        SaveLanguagesInDataSourceImpl()
 }
