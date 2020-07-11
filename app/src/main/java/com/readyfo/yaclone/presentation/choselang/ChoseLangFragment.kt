@@ -3,6 +3,7 @@ package com.readyfo.yaclone.presentation.choselang
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
@@ -71,7 +72,7 @@ class ChoseLangFragment : MvpAppCompatFragment(), ChoseLangView, ChoseLangAdapte
         // Inflate the layout for this fragment
         val rootView = inflater.inflate(R.layout.fragment_chose_lang, container, false)
         toolbar = rootView!!.findViewById(R.id.toolbarChoseLang)
-//        setupActionBar()
+        setupActionBar()
 
         return rootView
     }
@@ -121,25 +122,25 @@ class ChoseLangFragment : MvpAppCompatFragment(), ChoseLangView, ChoseLangAdapte
         // TODO("Not yet implemented")
     }
 
-//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-//
-//        return when (item.itemId) {
-//            android.R.id.home -> {
-//                hideBottomNavigationView(true)
-//                findNavController().navigateUp()
-//                true
-//            }
-//            else ->
-//                super.onOptionsItemSelected(item)
-//        }
-//    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
-//    private fun setupActionBar() {
-//        appCompatActivity.setSupportActionBar(toolbar)
-//
-//        appCompatActivity.supportActionBar?.setHomeButtonEnabled(true)
-//        appCompatActivity.supportActionBar?.setDisplayHomeAsUpEnabled(true)
-//    }
+        return when (item.itemId) {
+            android.R.id.home -> {
+                hideBottomNavigationView(true)
+                findNavController().navigateUp()
+                true
+            }
+            else ->
+                super.onOptionsItemSelected(item)
+        }
+    }
+
+    private fun setupActionBar() {
+        appCompatActivity.setSupportActionBar(toolbar)
+
+        appCompatActivity.supportActionBar?.setHomeButtonEnabled(true)
+        appCompatActivity.supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    }
 
     private fun setupAdapter() {
         recyclerViewChoseLang.layoutManager =
