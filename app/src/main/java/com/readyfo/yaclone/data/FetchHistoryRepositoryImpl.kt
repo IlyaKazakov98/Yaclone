@@ -1,6 +1,6 @@
 package com.readyfo.yaclone.data
 
-import com.readyfo.yaclone.data.datasource.FetchHistoryDataSource
+import com.readyfo.yaclone.data.datasource.local.FetchHistoryDataSource
 import com.readyfo.yaclone.domain.repositories.FetchHistoryRepository
 import javax.inject.Inject
 

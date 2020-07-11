@@ -1,4 +1,4 @@
-package com.readyfo.yaclone.data.datasource
+package com.readyfo.yaclone.data.datasource.local
 
 import com.readyfo.yaclone.domain.models.HistoryModel
 import io.reactivex.Observable

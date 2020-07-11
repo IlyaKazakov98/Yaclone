@@ -8,4 +8,6 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="list_is_empty">Список пуст</string>
     <string name="user_agreement">Переведено сервисом «Яндекс.Переводчик» \n http://translate.yandex.ru</string>
+    <string name="titleTextLanguage">Язык текста</string>
+    <string name="titleTranslateLanguage">Язык перевода</string>
 </resources>

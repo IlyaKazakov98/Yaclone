@@ -16,12 +16,13 @@ import moxy.presenter.InjectPresenter
 import moxy.presenter.ProvidePresenter
 import javax.inject.Inject
 
-class HistoryFragment : MvpAppCompatFragment(),
-    HistoryView, HistoryAdapter.OnClickFavorites {
+class HistoryFragment : MvpAppCompatFragment(), HistoryView, HistoryAdapter.OnClickFavorites {
     @Inject
     lateinit var fetchHistoryUseCaseImpl: FetchHistoryUseCaseImpl
 
-    @InjectPresenter lateinit var presenter: HistoryPresenter
+    @InjectPresenter
+    lateinit var presenter: HistoryPresenter
+
     @ProvidePresenter
     fun provideHistoryPresenter(): HistoryPresenter {
         return HistoryPresenter(
@@ -54,7 +55,7 @@ class HistoryFragment : MvpAppCompatFragment(),
     }
 
     override fun onClickFavorites(isFavorites: Boolean) {
-
+        // TODO make clickFavorite
     }
 
     // View implementation
@@ -62,15 +63,11 @@ class HistoryFragment : MvpAppCompatFragment(),
         mHistoryAdapter.setData(historyData)
     }
 
-    override fun presentLoading(isLoading: Boolean) {
-        setVisibility(progressBar, isLoading)
-    }
-
     override fun presentHistoryEmpty(isEmpty: Boolean) {
         setVisibility(isEmptyHistory, isEmpty)
     }
 
-    private fun setVisibility(view: View, visibility: Boolean){
+    private fun setVisibility(view: View, visibility: Boolean) {
         view.visibility =
             if (visibility)
                 View.VISIBLE

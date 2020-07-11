@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#ffdb61</color>
     <color name="colorPrimaryDark">#e1c355</color>
-    <color name="colorAccent">#ffffff</color>
+    <color name="colorAccent">#ffdb61</color>
 
     <color name="backGroundActivity">#ffdb61</color>
     <color name="backGroundTextView">#ffffff</color>

@@ -1,24 +1,33 @@
 package com.readyfo.yaclone.di.modules
 
-import com.readyfo.yaclone.data.FetchHistoryRepositoryImpl
-import com.readyfo.yaclone.datasource.local.datasourceimpl.FetchHistoryDataSourceImpl
-import com.readyfo.yaclone.domain.usecases.implementations.FetchHistoryUseCaseImpl
+import android.app.Application
 import dagger.Module
 import dagger.Provides
+import javax.inject.Singleton
+
 
 @Module
-class AppModule {
-    @Provides
-    fun provideFetchHistoryUseCase(fetchHistoryRepository: FetchHistoryRepositoryImpl) =
-        FetchHistoryUseCaseImpl(fetchHistoryRepository = fetchHistoryRepository)
+class AppModule(val app: Application) {
 
     @Provides
-    fun provideFetchHistoryRepository(fetchHistoryDataSourceImpl: FetchHistoryDataSourceImpl) =
-        FetchHistoryRepositoryImpl(
-            fetchHistoryDataSource = fetchHistoryDataSourceImpl
-        )
+    @Singleton
+    fun providesApplication() = app
 
-    @Provides
-    fun provideFetchHistoryDataSource() =
-        FetchHistoryDataSourceImpl()
+//    @Provides
+//    @Singleton
+//    fun providesApplicationContext(app: Application): Context = app.applicationContext
+
+//    @Provides
+//    @Singleton
+//    @Named("app")
+//    fun providesApplication(): Application {
+//        return mApplication
+//    }
+//
+//    @Singleton
+//    @Provides
+//    @Named("appContext")
+//    fun provideContext(): Context {
+//        return mApplication.applicationContext
+//    }
 }
