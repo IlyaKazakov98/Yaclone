@@ -12,11 +12,11 @@ import androidx.appcompat.widget.Toolbar
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.readyfo.yaclone.App
 import com.readyfo.yaclone.R
 import com.readyfo.yaclone.domain.models.LanguageModel
 import com.readyfo.yaclone.domain.usecases.implementations.FetchLanguagesUseCaseImpl
+import com.readyfo.yaclone.presentation.utils.setVisibility
 import kotlinx.android.synthetic.main.fragment_chose_lang.*
 import moxy.MvpAppCompatFragment
 import moxy.presenter.InjectPresenter
@@ -54,7 +54,6 @@ class ChoseLangFragment : MvpAppCompatFragment(), ChoseLangView, ChoseLangAdapte
     private val onBackPressedDispatcherCallback by lazy {
         object : OnBackPressedCallback(true){
             override fun handleOnBackPressed() {
-                hideBottomNavigationView(true)
                 findNavController().navigateUp()
             }
         }
@@ -81,7 +80,6 @@ class ChoseLangFragment : MvpAppCompatFragment(), ChoseLangView, ChoseLangAdapte
         super.onViewCreated(view, savedInstanceState)
 
         setTitle()
-        hideBottomNavigationView(false)
         setupAdapter()
 
         presenter.fetchLanguages()
@@ -97,25 +95,12 @@ class ChoseLangFragment : MvpAppCompatFragment(), ChoseLangView, ChoseLangAdapte
         onBackPressedDispatcherCallback.remove()
     }
 
-    private fun hideBottomNavigationView(isVisibility: Boolean) {
-        val navView = requireActivity().findViewById<BottomNavigationView>(R.id.nav_view)
-        setVisibility(navView, isVisibility)
-    }
-
     override fun presentLanguages(languages: List<LanguageModel>) {
         mChoseLangAdapter.setData(languages)
     }
 
     override fun presentLoading(isLoading: Boolean) {
         setVisibility(progressBar, isLoading)
-    }
-
-    private fun setVisibility(view: View, visibility: Boolean) {
-        view.visibility =
-            if (visibility)
-                View.VISIBLE
-            else
-                View.GONE
     }
 
     override fun onSelectedLang(language: String) {
@@ -126,7 +111,6 @@ class ChoseLangFragment : MvpAppCompatFragment(), ChoseLangView, ChoseLangAdapte
 
         return when (item.itemId) {
             android.R.id.home -> {
-                hideBottomNavigationView(true)
                 findNavController().navigateUp()
                 true
             }

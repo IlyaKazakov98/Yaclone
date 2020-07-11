@@ -38,9 +38,9 @@ class TranslatorFragment : MvpAppCompatFragment(){
             it.findNavController().navigate(action)
         }
 
-        btnSwapLang.setOnClickListener {
-
-        }
+//        btnSwapLang.setOnClickListener {
+//
+//        }
 
         btnLanguageTo.setOnClickListener {
             val typeLanguage = ChoseLangFragment.TYPE_TRANSLATE_LANGUAGE

@@ -6,6 +6,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.readyfo.yaclone.R
+import com.readyfo.yaclone.presentation.utils.setVisibility
 
 
 class MainActivity : AppCompatActivity() {
@@ -25,6 +26,23 @@ class MainActivity : AppCompatActivity() {
     private fun setupNavigation() {
         bottomNavView = findViewById(R.id.nav_view)
         val navController = findNavController(R.id.nav_host_fragment)
+        navController.addOnDestinationChangedListener { controller, destination, arguments ->
+            when(destination.id){
+                R.id.navigation_translator, R.id.navigation_history -> showBottomNavigation()
+                else -> hideBottomNavigation()
+            }
+        }
+
         bottomNavView.setupWithNavController(navController)
+    }
+
+    private fun showBottomNavigation() {
+        val navView = findViewById<BottomNavigationView>(R.id.nav_view)
+        setVisibility(navView, true)
+    }
+
+    private fun hideBottomNavigation() {
+        val navView = findViewById<BottomNavigationView>(R.id.nav_view)
+        setVisibility(navView, false)
     }
 }
