@@ -1,6 +1,6 @@
 package com.readyfo.yaclone.presentation.translator
 
-import androidx.lifecycle.ViewModel
+import com.readyfo.yaclone.core.common.BaseViewModel
 
-class TranslatorViewModel : ViewModel() {
+class TranslatorViewModel : BaseViewModel() {
 }

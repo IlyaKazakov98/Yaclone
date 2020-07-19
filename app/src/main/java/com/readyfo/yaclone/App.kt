@@ -21,6 +21,7 @@ class App : Application() {
             androidLogger()
 
             modules(
+                appModule,
                 presentationModule,
                 domainModule,
                 dataModule,

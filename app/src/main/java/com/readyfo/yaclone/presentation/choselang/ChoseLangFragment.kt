@@ -9,16 +9,17 @@ import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.readyfo.yaclone.R
+import com.readyfo.yaclone.core.common.BaseFragment
+import com.readyfo.yaclone.core.common.BaseViewModel
 import kotlinx.android.synthetic.main.fragment_chose_lang.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 
-class ChoseLangFragment : Fragment(), ChoseLangAdapter.OnSelectedLang {
+class ChoseLangFragment : BaseFragment(), ChoseLangAdapter.OnSelectedLang {
     companion object {
         const val TYPE_TEXT_LANGUAGE = 0
         const val TYPE_TRANSLATE_LANGUAGE = 1
@@ -52,6 +53,8 @@ class ChoseLangFragment : Fragment(), ChoseLangAdapter.OnSelectedLang {
 
         return rootView
     }
+
+    override fun getViewModel(): BaseViewModel = viewModel
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
