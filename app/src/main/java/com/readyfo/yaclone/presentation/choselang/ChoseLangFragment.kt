@@ -9,40 +9,22 @@ import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.readyfo.yaclone.App
 import com.readyfo.yaclone.R
-import com.readyfo.yaclone.domain.models.LanguageModel
-import com.readyfo.yaclone.domain.usecases.implementations.FetchLanguagesUseCaseImpl
-import com.readyfo.yaclone.presentation.utils.setVisibility
 import kotlinx.android.synthetic.main.fragment_chose_lang.*
-import moxy.MvpAppCompatFragment
-import moxy.presenter.InjectPresenter
-import moxy.presenter.ProvidePresenter
-import javax.inject.Inject
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 
-class ChoseLangFragment : MvpAppCompatFragment(), ChoseLangView, ChoseLangAdapter.OnSelectedLang {
+class ChoseLangFragment : Fragment(), ChoseLangAdapter.OnSelectedLang {
     companion object {
         const val TYPE_TEXT_LANGUAGE = 0
         const val TYPE_TRANSLATE_LANGUAGE = 1
     }
 
-    @Inject
-    lateinit var fetchLanguagesUseCaseImpl: FetchLanguagesUseCaseImpl
-
-    @InjectPresenter
-    lateinit var presenter: ChoseLangPresenter
-
-    @ProvidePresenter
-    fun provideHistoryPresenter(): ChoseLangPresenter {
-        return ChoseLangPresenter(
-            fetchLanguagesUseCase = fetchLanguagesUseCaseImpl
-        )
-    }
-
+    private val viewModel by sharedViewModel<ChoseLangViewModel>()
     private val args: ChoseLangFragmentArgs by navArgs()
     private val mChoseLangAdapter by lazy {
         ChoseLangAdapter(args.selectedLanguage)
@@ -57,11 +39,6 @@ class ChoseLangFragment : MvpAppCompatFragment(), ChoseLangView, ChoseLangAdapte
                 findNavController().navigateUp()
             }
         }
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        App.appComponent.injectChoseLangFragment(this)
-        super.onCreate(savedInstanceState)
     }
 
     override fun onCreateView(
@@ -82,7 +59,7 @@ class ChoseLangFragment : MvpAppCompatFragment(), ChoseLangView, ChoseLangAdapte
         setTitle()
         setupAdapter()
 
-        presenter.fetchLanguages()
+        viewModel.fetchLanguages()
     }
 
     override fun onStart() {
@@ -95,13 +72,13 @@ class ChoseLangFragment : MvpAppCompatFragment(), ChoseLangView, ChoseLangAdapte
         onBackPressedDispatcherCallback.remove()
     }
 
-    override fun presentLanguages(languages: List<LanguageModel>) {
-        mChoseLangAdapter.setData(languages)
-    }
-
-    override fun presentLoading(isLoading: Boolean) {
-        setVisibility(progressBar, isLoading)
-    }
+//    override fun presentLanguages(languages: List<LanguageModel>) {
+//        mChoseLangAdapter.setData(languages)
+//    }
+//
+//    override fun presentLoading(isLoading: Boolean) {
+//        setVisibility(progressBar, isLoading)
+//    }
 
     override fun onSelectedLang(language: String) {
         // TODO("Not yet implemented")

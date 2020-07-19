@@ -5,10 +5,10 @@ import com.readyfo.yaclone.datasource.local.dao.LanguagesDAO
 import com.readyfo.yaclone.datasource.local.toLanguageModel
 import com.readyfo.yaclone.domain.models.LanguageModel
 import io.reactivex.Observable
-import javax.inject.Inject
 
-class FetchLanguagesLocalDataSourceImpl @Inject constructor(private val dao: LanguagesDAO) :
-    FetchLanguagesLocalDataSource {
+class FetchLanguagesLocalDataSourceImpl(
+    private val dao: LanguagesDAO
+) : FetchLanguagesLocalDataSource {
 
     override fun fetchLanguagesFromLocal(): Observable<List<LanguageModel>> = dao.fetchLanguages()
         .flatMap { it ->

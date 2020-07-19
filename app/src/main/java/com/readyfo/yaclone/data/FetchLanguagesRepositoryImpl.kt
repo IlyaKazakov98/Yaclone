@@ -7,9 +7,8 @@ import com.readyfo.yaclone.domain.models.LanguageModel
 import com.readyfo.yaclone.domain.repositories.FetchLanguagesRepository
 import io.reactivex.Observable
 import io.reactivex.Single
-import javax.inject.Inject
 
-class FetchLanguagesRepositoryImpl @Inject constructor(
+class FetchLanguagesRepositoryImpl constructor(
     private val fetchLanguagesLocalDataSource: FetchLanguagesLocalDataSource,
     private val fetchLanguagesRemoteDataSource: FetchLanguagesRemoteDataSource,
     private val saveLanguagesInDataSource: SaveLanguagesInDataSource

@@ -1,29 +1,18 @@
 package com.readyfo.yaclone.di.modules
 
-import com.readyfo.yaclone.datasource.local.dao.HistoryDAO
-import com.readyfo.yaclone.datasource.local.dao.LanguagesDAO
+import com.readyfo.yaclone.data.datasource.local.FetchHistoryDataSource
+import com.readyfo.yaclone.data.datasource.local.FetchLanguagesLocalDataSource
+import com.readyfo.yaclone.data.datasource.local.SaveLanguagesInDataSource
+import com.readyfo.yaclone.data.datasource.remote.FetchLanguagesRemoteDataSource
 import com.readyfo.yaclone.datasource.local.datasourceimpl.FetchHistoryDataSourceImpl
 import com.readyfo.yaclone.datasource.local.datasourceimpl.FetchLanguagesLocalDataSourceImpl
 import com.readyfo.yaclone.datasource.local.datasourceimpl.SaveLanguagesInDataSourceImpl
 import com.readyfo.yaclone.datasource.remote.datasourceimpl.FetchLanguagesRemoteDataSourceImpl
-import dagger.Module
-import dagger.Provides
+import org.koin.dsl.module
 
-@Module
-class DataSourceModule {
-    @Provides
-    fun provideFetchHistoryDataSource(dao: HistoryDAO) =
-        FetchHistoryDataSourceImpl(dao = dao)
-
-    @Provides
-    fun provideFetchLanguagesLocalDataSource(dao: LanguagesDAO) =
-        FetchLanguagesLocalDataSourceImpl(dao = dao)
-
-    @Provides
-    fun provideFetchLanguagesRemoteDataSource() =
-        FetchLanguagesRemoteDataSourceImpl()
-
-    @Provides
-    fun provideSaveLanguagesInDataSource(dao: LanguagesDAO) =
-        SaveLanguagesInDataSourceImpl(dao = dao)
+val dataSourceModule = module {
+    single <FetchHistoryDataSource> { FetchHistoryDataSourceImpl(get()) }
+    single <FetchLanguagesLocalDataSource> { FetchLanguagesLocalDataSourceImpl(get()) }
+    single <FetchLanguagesRemoteDataSource> { FetchLanguagesRemoteDataSourceImpl() }
+    single <SaveLanguagesInDataSource> { SaveLanguagesInDataSourceImpl(get()) }
 }

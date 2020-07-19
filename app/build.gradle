@@ -50,26 +50,14 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'androidx.cardview:cardview:1.0.0'
 
-    moxy()
     liveCycle()
     retrofit()
     room()
     rxJava()
     coroutine()
     navigation()
-    dagger()
     koin()
     mockito()
-}
-
-def moxy() {
-    dependencies {
-        def moxyVersion = '2.1.2'
-
-        implementation "com.github.moxy-community:moxy:$moxyVersion"
-        kapt "com.github.moxy-community:moxy-compiler:$moxyVersion"
-        implementation "com.github.moxy-community:moxy-androidx:$moxyVersion"
-    }
 }
 
 def liveCycle() {
@@ -127,15 +115,6 @@ def navigation() {
 
         implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
         implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
-    }
-}
-
-def dagger() {
-    dependencies {
-        def daggerVersion = '2.27'
-
-        api "com.google.dagger:dagger:$daggerVersion"
-        kapt "com.google.dagger:dagger-compiler:$daggerVersion"
     }
 }
 
