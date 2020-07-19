@@ -1,32 +1,32 @@
 package com.readyfo.yaclone
 
 import android.app.Application
-import android.content.Context
 import com.readyfo.yaclone.datasource.remote.RetrofitBuilder
-import com.readyfo.yaclone.di.AppComponent
-import com.readyfo.yaclone.di.DaggerAppComponent
-import com.readyfo.yaclone.di.modules.AppModule
+import com.readyfo.yaclone.di.modules.*
+import org.koin.android.ext.koin.androidContext
+import org.koin.android.ext.koin.androidLogger
+import org.koin.core.context.startKoin
 
 class App : Application() {
-    companion object {
-        lateinit var instance: App
-        lateinit var context: Context
-        lateinit var appComponent: AppComponent
-    }
 
     override fun onCreate() {
         super.onCreate()
-        context = this
-        instance = this
-        initDagger()
+        initKoin()
         RetrofitBuilder.createLanguagesService()
     }
 
-    private fun initDagger(){
-        appComponent = DaggerAppComponent
-            .builder()
-            .appModule(AppModule(this))
-            .build()
-        appComponent.injectApp(this)
+    private fun initKoin() {
+        startKoin {
+            androidContext(this@App)
+            androidLogger()
+
+            modules(
+                presentationModule,
+                domainModule,
+                dataModule,
+                dataSourceModule,
+                localModule
+            )
+        }
     }
 }

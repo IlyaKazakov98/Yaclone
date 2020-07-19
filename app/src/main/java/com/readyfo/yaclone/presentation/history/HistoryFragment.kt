@@ -5,38 +5,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.readyfo.yaclone.App
 import com.readyfo.yaclone.R
-import com.readyfo.yaclone.domain.models.HistoryModel
-import com.readyfo.yaclone.domain.usecases.implementations.FetchHistoryUseCaseImpl
 import kotlinx.android.synthetic.main.fragment_history.*
-import moxy.MvpAppCompatFragment
-import moxy.presenter.InjectPresenter
-import moxy.presenter.ProvidePresenter
-import javax.inject.Inject
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
-class HistoryFragment : MvpAppCompatFragment(), HistoryView, HistoryAdapter.OnClickFavorites {
-    @Inject
-    lateinit var fetchHistoryUseCaseImpl: FetchHistoryUseCaseImpl
+class HistoryFragment : Fragment(), HistoryAdapter.OnClickFavorites {
 
-    @InjectPresenter
-    lateinit var presenter: HistoryPresenter
-
-    @ProvidePresenter
-    fun provideHistoryPresenter(): HistoryPresenter {
-        return HistoryPresenter(
-            fetchHistoryUseCase = fetchHistoryUseCaseImpl
-        )
-    }
-
+    private val viewModel by sharedViewModel<HistoryViewModel>()
     private val mHistoryAdapter by lazy {
         HistoryAdapter()
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        App.appComponent.injectHistoryFragment(this)
-        super.onCreate(savedInstanceState)
     }
 
     override fun onCreateView(
@@ -51,7 +30,7 @@ class HistoryFragment : MvpAppCompatFragment(), HistoryView, HistoryAdapter.OnCl
         super.onViewCreated(view, savedInstanceState)
 
         setupAdapter()
-        presenter.fetchHistory()
+        viewModel.fetchHistory()
     }
 
     override fun onClickFavorites(isFavorites: Boolean) {
@@ -59,13 +38,13 @@ class HistoryFragment : MvpAppCompatFragment(), HistoryView, HistoryAdapter.OnCl
     }
 
     // View implementation
-    override fun presentHistory(historyData: MutableList<HistoryModel>) {
-        mHistoryAdapter.setData(historyData)
-    }
-
-    override fun presentHistoryEmpty(isEmpty: Boolean) {
-        setVisibility(isEmptyHistory, isEmpty)
-    }
+//    override fun presentHistory(historyData: MutableList<HistoryModel>) {
+//        mHistoryAdapter.setData(historyData)
+//    }
+//
+//    override fun presentHistoryEmpty(isEmpty: Boolean) {
+//        setVisibility(isEmptyHistory, isEmpty)
+//    }
 
     private fun setVisibility(view: View, visibility: Boolean) {
         view.visibility =

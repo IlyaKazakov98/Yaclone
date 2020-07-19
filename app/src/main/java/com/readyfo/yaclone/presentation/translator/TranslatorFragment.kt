@@ -5,16 +5,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.readyfo.yaclone.R
 import com.readyfo.yaclone.presentation.choselang.ChoseLangFragment
 import kotlinx.android.synthetic.main.fragment_translator.*
-import moxy.MvpAppCompatFragment
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 
-class TranslatorFragment : MvpAppCompatFragment(){
-//    @InjectPresenter
-//    var translatorPresenter: TranslatorPresenter? = null
+class TranslatorFragment : Fragment() {
+
+    private val viewModel by sharedViewModel<TranslatorViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,7 +35,10 @@ class TranslatorFragment : MvpAppCompatFragment(){
     private fun setupChoseLangContainer() {
         btnLanguageFrom.setOnClickListener {
             val typeLanguage = ChoseLangFragment.TYPE_TEXT_LANGUAGE
-            val action = TranslatorFragmentDirections.actionNavigationTranslatorToChoseLangFragment("ru", typeLanguage)
+            val action = TranslatorFragmentDirections.actionNavigationTranslatorToChoseLangFragment(
+                "ru",
+                typeLanguage
+            )
             it.findNavController().navigate(action)
         }
 
@@ -44,7 +48,10 @@ class TranslatorFragment : MvpAppCompatFragment(){
 
         btnLanguageTo.setOnClickListener {
             val typeLanguage = ChoseLangFragment.TYPE_TRANSLATE_LANGUAGE
-            val action = TranslatorFragmentDirections.actionNavigationTranslatorToChoseLangFragment("en", typeLanguage)
+            val action = TranslatorFragmentDirections.actionNavigationTranslatorToChoseLangFragment(
+                "en",
+                typeLanguage
+            )
             it.findNavController().navigate(action)
         }
     }
