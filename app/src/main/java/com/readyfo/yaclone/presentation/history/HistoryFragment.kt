@@ -5,13 +5,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.readyfo.yaclone.R
+import com.readyfo.yaclone.core.common.BaseFragment
+import com.readyfo.yaclone.core.common.BaseViewModel
 import kotlinx.android.synthetic.main.fragment_history.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
-class HistoryFragment : Fragment(), HistoryAdapter.OnClickFavorites {
+class HistoryFragment : BaseFragment(), HistoryAdapter.OnClickFavorites {
 
     private val viewModel by sharedViewModel<HistoryViewModel>()
     private val mHistoryAdapter by lazy {
@@ -25,6 +26,8 @@ class HistoryFragment : Fragment(), HistoryAdapter.OnClickFavorites {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_history, container, false)
     }
+
+    override fun getViewModel(): BaseViewModel = viewModel
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

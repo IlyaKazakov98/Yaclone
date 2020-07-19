@@ -5,15 +5,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.readyfo.yaclone.R
+import com.readyfo.yaclone.core.common.BaseFragment
+import com.readyfo.yaclone.core.common.BaseViewModel
 import com.readyfo.yaclone.presentation.choselang.ChoseLangFragment
 import kotlinx.android.synthetic.main.fragment_translator.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 
-class TranslatorFragment : Fragment() {
+class TranslatorFragment : BaseFragment() {
 
     private val viewModel by sharedViewModel<TranslatorViewModel>()
 
@@ -24,6 +25,8 @@ class TranslatorFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_translator, container, false)
     }
+
+    override fun getViewModel(): BaseViewModel = viewModel
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
